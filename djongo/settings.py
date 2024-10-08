@@ -25,9 +25,9 @@ pymysql.install_as_MySQLdb()
 SECRET_KEY = 'django-insecure-=(u&oq4adgv**(98jy9n!8j_gk%2l_zfr$@k(_)^n*5v7o-cv8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'FALSE').lower() == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOST').split(' ')
 
 
 # Application definition
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'djongo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_emp',
@@ -84,7 +84,7 @@ DATABASES = {
         'PASSWORD': '123456'
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
